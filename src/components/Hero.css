@@ -1,0 +1,229 @@
+.yg-hero {
+  position: relative;
+  background: var(--bg-dim);
+}
+
+.yg-hero-driver {
+  position: relative;
+  height: 220vh;
+}
+
+.yg-hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.yg-hero-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  width: min(1800px, calc(100vw - 112px));
+  height: min(82vh, 840px);
+  margin-top: 108px;
+  will-change: width, height, margin-top, border-radius;
+}
+
+.yg-hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+  will-change: opacity;
+  transition: opacity 900ms ease-in-out;
+}
+
+.yg-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  background: linear-gradient(to bottom, rgba(4, 14, 48, 0.5) 0%, rgba(4, 14, 48, 0.38) 45%, rgba(4, 14, 48, 0.66) 100%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Mobile: no scroll-pin/zoom — the hero is just a normal full-bleed video,
+   once. The 220vh driver, sticky wrapper and 100vw/100svh + counter-translate
+   sizing above are all part of the desktop/tablet-only pin trick (disabled
+   in JS via `isDesktop`, see Hero.tsx) and collapse to a plain block here. */
+@media (max-width: 767px) {
+  .yg-hero-driver {
+    height: 100svh;
+  }
+
+  .yg-hero-sticky {
+    position: relative;
+    align-items: stretch;
+  }
+
+  .yg-hero-card {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .yg-hero-video,
+  .yg-hero-overlay {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.yg-hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(20px, 3vh, 32px);
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.yg-hero-dot {
+  display: block;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+  transition: width 0.3s var(--ease-out-quart);
+}
+
+.yg-hero-dot-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  transform-origin: 0 50%;
+  transition: transform 0.1s linear;
+}
+
+.yg-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(40px, 6vw, 72px) clamp(24px, 5vw, 64px);
+}
+
+.yg-hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 5.2vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 1px 24px rgba(4, 14, 48, 0.35);
+  /* No hardcoded <br> — let the browser balance the line breaks itself
+     (was forcing "solutions" and "pour faire" onto separate, unbalanced
+     lines at narrow widths). */
+  text-wrap: balance;
+}
+
+.yg-hero-lead {
+  margin: clamp(18px, 2vw, 24px) auto 0;
+  font-size: clamp(1rem, 1.15vw, 1.1875rem);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 52ch;
+  text-shadow: 0 1px 16px rgba(4, 14, 48, 0.4);
+}
+
+.yg-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(28px, 3.2vw, 40px);
+}
+
+@media (max-width: 560px) {
+  .yg-hero-ctas {
+    flex-direction: column;
+    align-self: stretch;
+    width: 100%;
+  }
+
+  .yg-hero-cta-primary,
+  .yg-hero-cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.yg-hero-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 8px;
+  background: #fff;
+  color: #010d59;
+  font-weight: 500;
+  font-size: 14.5px;
+  transition: opacity 0.18s;
+}
+
+.yg-hero-cta-primary:hover {
+  opacity: 0.9;
+  color: #010d59;
+}
+
+.yg-hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  color: #fff;
+  font-weight: 500;
+  font-size: 14.5px;
+  transition:
+    background 0.18s,
+    border-color 0.18s;
+}
+
+.yg-hero-cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Placed after the base rules above (not with the other mobile overrides
+   near the top of the file) — same specificity, so source order decides,
+   and a media rule earlier than the plain rule it's meant to override loses
+   the cascade. */
+@media (max-width: 767px) {
+  .yg-hero-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .yg-hero-lead {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .yg-hero-ctas {
+    justify-content: flex-start;
+  }
+}

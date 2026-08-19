@@ -1,0 +1,47 @@
+.yg-band-wrapper {
+  background: #fff;
+  padding: clamp(10px, 1.4vw, 16px) clamp(16px, 4vw, 24px) clamp(14px, 2vw, 22px);
+}
+
+.yg-band-marq {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.yg-band-track {
+  gap: clamp(30px, 4.5vw, 68px);
+  padding-right: clamp(30px, 4.5vw, 68px);
+}
+
+.yg-band-logo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yg-band-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.yg-band-navy,
+.yg-band-color {
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  display: block;
+}
+
+.yg-band-color {
+  position: absolute;
+  inset: 0;
+}
+
+.yg-band-text {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--navy-800);
+  white-space: nowrap;
+}

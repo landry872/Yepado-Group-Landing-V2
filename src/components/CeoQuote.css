@@ -1,0 +1,107 @@
+.yg-ceo {
+  background: var(--bg);
+}
+
+.yg-ceo-figure {
+  --ceo-pad: clamp(20px, 5vw, 80px);
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 96px) var(--ceo-pad);
+}
+
+.yg-ceo-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .yg-ceo-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.yg-ceo-portrait {
+  flex: 0 0 auto;
+  width: clamp(160px, 22vw, 240px);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: var(--grey-200);
+  display: block;
+  /* Matches the grayscale/high-contrast treatment used on the "Le Groupe"
+     archival footage elsewhere on the page. */
+  filter: grayscale(1) contrast(1.05);
+}
+
+@media (max-width: 767px) {
+  .yg-ceo-portrait {
+    /* Bleeds out past the figure's own side padding to span the full
+       screen width. */
+    width: calc(100% + var(--ceo-pad) * 2);
+    margin-left: calc(-1 * var(--ceo-pad));
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+  }
+}
+
+.yg-ceo-portrait-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.yg-ceo-text {
+  flex: 1 1 380px;
+  min-width: min(100%, 300px);
+}
+
+@media (max-width: 767px) {
+  .yg-ceo-text {
+    /* In the mobile column layout `flex-basis` sets a HEIGHT, not a width —
+       380px (sized for the desktop row) left a large empty gap below the
+       actual (much shorter) text content. */
+    flex-basis: auto;
+    min-width: 0;
+  }
+}
+
+.yg-ceo-quote-mark {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 0.5;
+  color: var(--blue-400);
+  margin-bottom: 18px;
+}
+
+.yg-ceo-quote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 106;
+  font-weight: 600;
+  font-size: clamp(1.375rem, 2.6vw, 2.125rem);
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: var(--blue-700);
+}
+
+.yg-ceo-caption {
+  margin-top: clamp(24px, 3vw, 32px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--ink-muted);
+}
+
+.yg-ceo-name {
+  font-weight: 600;
+  color: var(--blue-700);
+}

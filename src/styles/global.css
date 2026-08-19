@@ -1,0 +1,243 @@
+:root {
+  --navy-950: #05070f;
+  --navy-900: #001233;
+  --navy-800: #010d59;
+  --navy-700: #001f6b;
+  --blue-700: #002e9e;
+  --blue-600: #00449e;
+  --blue-400: #00a3e0;
+  --blue-300: #5cc8f0;
+  --ink: #101319;
+  --ink-muted: #3a3f4a;
+  --grey-500: #6b7280;
+  --grey-300: #d0d5dd;
+  --grey-200: #e4e7ec;
+  --grey-100: #edeff3;
+  --bg: #f8fafc;
+  --bg-dim: #eaecf0;
+  --white: #ffffff;
+  --font-display: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+  --ease-out-quart: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--blue-700);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--blue-600);
+}
+
+::selection {
+  background: var(--blue-400);
+  color: #fff;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+[data-rail]::-webkit-scrollbar {
+  display: none;
+}
+
+/* Buttons with a reveal-on-hover arrow */
+.yg-btn {
+  overflow: hidden;
+}
+
+.yg-btn .yg-arrow {
+  display: inline-flex;
+  align-items: center;
+  width: 0;
+  opacity: 0;
+  margin-left: 0;
+  transition:
+    width 0.24s var(--ease-out-quart),
+    opacity 0.18s,
+    margin-left 0.24s var(--ease-out-quart);
+}
+
+.yg-btn .yg-arrow svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.yg-btn:hover .yg-arrow,
+.yg-btn:focus-visible .yg-arrow {
+  width: 14px;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+/* Logo band: navy by default, swap to color wordmark on hover */
+.yg-band-logo .yg-band-color {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.yg-band-logo .yg-band-navy {
+  transition: opacity 0.3s;
+}
+
+.yg-band-logo:hover .yg-band-navy {
+  opacity: 0;
+}
+
+.yg-band-logo:hover .yg-band-color {
+  opacity: 1;
+}
+
+/* Infinite logo marquee, pauses on hover */
+.yg-marq {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.yg-marq-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ygMarquee 42s linear infinite;
+}
+
+.yg-marq:hover .yg-marq-track {
+  animation-play-state: paused;
+}
+
+/* Solution cards: hover overlay CTA */
+.yg-sol-card .yg-sol-hover {
+  opacity: 0;
+  transition: opacity 0.32s var(--ease-out-quart);
+}
+
+.yg-sol-card .yg-sol-btn {
+  transform: translateY(10px);
+  transition:
+    transform 0.32s var(--ease-out-quart),
+    opacity 0.32s;
+}
+
+.yg-sol-card:hover .yg-sol-hover {
+  opacity: 1;
+}
+
+.yg-sol-card:hover .yg-sol-btn {
+  transform: translateY(0);
+}
+
+/* Scroll-reveal fade-up, toggled by the useReveal hook */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.62s var(--ease-out-quart),
+    transform 0.62s var(--ease-out-quart);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes ygDrift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(5px, -6px);
+  }
+  66% {
+    transform: translate(-5px, 4px);
+  }
+}
+
+@keyframes ygPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 163, 224, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 163, 224, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 163, 224, 0);
+  }
+}
+
+@keyframes ygMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes ygDot {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(34px);
+    opacity: 0;
+  }
+}
+
+@keyframes ygFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+  }
+}
