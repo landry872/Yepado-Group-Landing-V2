@@ -26,5 +26,5 @@ npm run preview
 
 ## Known follow-ups
 
-- **Contact form** (`src/components/Contact.tsx`) — currently a client-side "fake submit," with no backend. Wire it up to a real endpoint (Formspree, a serverless function, a `mailto:` fallback, etc.) before relying on it to actually receive messages.
-- **Favicon** — currently the Yepado Group wordmark as a stand-in; swap in a proper square icon if/when one exists.
+- **Contact form** (`src/components/Contact.tsx`) — currently a client-side "fake submit," with no backend. 
+- **Favicon** — currently the Yepado Group wordmark as a stand-in;
