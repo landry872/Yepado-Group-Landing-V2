@@ -184,7 +184,9 @@ export default function Hero() {
 
             <div className="yg-hero-content">
               <h1 id="hero-title" className="yg-hero-title">
-                Des technologies et des solutions pour faire avancer l’Afrique
+                Des technologies et des solutions
+                <br />
+                pour faire avancer l’Afrique
               </h1>
               <p className="yg-hero-lead">
                 Yepado Group conçoit et exploite un écosystème d’entreprises qui répond aux défis de la mobilité, de la
